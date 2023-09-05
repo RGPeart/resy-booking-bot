@@ -39,7 +39,7 @@ class ResyClient(resyApi: ResyApi) extends Logging {
     partySize: Int,
     venueId: Int,
     resTimeTypes: Seq[ReservationTimeType],
-    millisToRetry: Long = (10 seconds).toMillis
+    millisToRetry: Long = (5 seconds).toMillis
   ): Try[String] =
     retryFindReservations(
       date,
@@ -113,7 +113,7 @@ class ResyClient(resyApi: ResyApi) extends Logging {
     val resyTokenResp = Try {
       val response = Await.result(
         awaitable = resyApi.postReservation(paymentMethodId, bookToken),
-        atMost    = 10 seconds
+        atMost    = 5 seconds
       )
 
       logger.debug(s"URL Response: $response")

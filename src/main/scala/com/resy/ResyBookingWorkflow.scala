@@ -10,7 +10,7 @@ import scala.util.{Failure, Success, Try}
 
 class ResyBookingWorkflow(resyClient: ResyClient, resDetails: ReservationDetails) extends Logging {
 
-  def run(millisToRetry: Long = (10 seconds).toMillis): Try[String] =
+  def run(millisToRetry: Long = (5 seconds).toMillis): Try[String] =
     runnable(millisToRetry, DateTime.now.getMillis)
 
   @tailrec
