@@ -152,7 +152,7 @@ class ResyClient(resyApi: ResyApi) extends Logging {
     val reservationTimesResp: Try[ReservationMap] = Try {
       val response = Await.result(
         awaitable = resyApi.getReservations(date, partySize, venueId),
-        atMost    = 5 seconds
+        atMost    = 3 seconds
       )
 
       logger.debug(s"URL Response: $response")
